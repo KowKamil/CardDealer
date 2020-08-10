@@ -12,7 +12,7 @@ namespace CardDealer.Controllers
     public class CardController : Controller
     {
         private readonly int minimumCards = 1;
-        private readonly int maximumCards = 1000;
+        private readonly int maximumCards = 100000;
 
         public IActionResult Index(int amount = 1, bool sorted = false, bool repeats = false)
         {

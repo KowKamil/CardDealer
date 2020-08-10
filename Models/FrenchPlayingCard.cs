@@ -37,11 +37,11 @@ namespace CardDealer.Models
             }
         }
 
-        public FrenchPlayingCard(Suits suit, int rank, Image image)
+        public FrenchPlayingCard(Suits suit, int rank, String cardUrl)
         {
             this.Suit = suit;
             this.Rank = rank;
-            this.Image = image;
+            this.CardUrl = cardUrl;
         }
 
         public override int CompareTo(object obj)

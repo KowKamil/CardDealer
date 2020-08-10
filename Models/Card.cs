@@ -5,14 +5,10 @@ using System.Net.Security;
 
 namespace CardDealer.Models
 {
-    public abstract class Card : IComparable, IDisposable
+    public abstract class Card : IComparable
     {
-        public Image Image { get; protected set; }
+        public String CardUrl { get; protected set; }
         public abstract int CompareTo(object obj);
 
-        public void Dispose()
-        {
-            this.Image.Dispose();
-        }
     }
 }

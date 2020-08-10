@@ -42,6 +42,12 @@ namespace CardDealer
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(System.IO.Path.Combine(env.ContentRootPath, "Cards Images")),
+                RequestPath = "/CardsImages"
+            });
+
             app.UseRouting();
 
             app.UseAuthorization();
