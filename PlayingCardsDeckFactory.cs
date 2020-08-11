@@ -15,28 +15,33 @@ namespace CardDealer
 
         public override Deck MakeDeck()
         {
+            IEnumerable<int> ranksTwoToAce = Enumerable.Range(2, 12); 
+            IEnumerable<int> frenchSuits = Enumerable.Range(1, 4);
+
             List<Card> cards = new List<Card>();
-            for (int i = 2; i <= 14; i++)
+
+            foreach (int rank in ranksTwoToAce)
             {
-                for (int j = 1; j <= 4; j++)
+                foreach (int suit in frenchSuits)
                 {
-                    cards.Add(new FrenchPlayingCard((FrenchPlayingCard.Suits)j, i, cardResourceName(cardPath, i, j)));
+                    cards.Add(new FrenchPlayingCard((FrenchPlayingCard.Suits)suit, rank, cardResourceName(cardPath, rank, suit)));
                 }
             }
-            cards.Add(new FrenchPlayingCard((FrenchPlayingCard.Suits)0, 15, cardResourceName(cardPath, blackJokerName)));
-            cards.Add(new FrenchPlayingCard((FrenchPlayingCard.Suits)0, 15, cardResourceName(cardPath, redJokerName)));
+
+            cards.Add(new FrenchPlayingCard(FrenchPlayingCard.Suits.Misc, 15, cardResourceName(cardPath, blackJokerName))); //black joker
+            cards.Add(new FrenchPlayingCard(FrenchPlayingCard.Suits.Misc, 15, cardResourceName(cardPath, redJokerName))); //red joker
 
             return new Deck(cards);
         }
 
         private String cardResourceName(string prefix, string cardString)
         {
-            return this.cardPath + cardString;
+            return prefix + cardString;
         }
 
         private String cardResourceName(string prefix, int cardRank, int cardSuit)
         {
-            return this.cardPath + $"{cardRank}_{cardSuit}.png";
+            return prefix + $"{cardRank}_{cardSuit}.png";
         }
 
     }
