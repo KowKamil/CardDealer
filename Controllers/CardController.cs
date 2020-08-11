@@ -21,5 +21,11 @@ namespace CardDealer.Controllers
             List<Card> cards = CardList.DrawCards(new PlayingCardsDeckFactory(), amount, sorted, repeats);
             return View(cards);
         }
+
+        public IActionResult Help()
+        {
+            return View();
+        }
+
     }
 }

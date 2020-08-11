@@ -54,6 +54,10 @@ namespace CardDealer
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(name: "help",
+                pattern: "help",
+                defaults: new { controller = "Card", action = "Help" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Card}/{action=Index}");
